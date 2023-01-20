@@ -13,6 +13,19 @@ app.use(
 )
 
 // rotas da API
+app.post('/', async (req, res) => {
+
+    //req.body
+    const { name, salary, approved } = req.body
+
+    const person = {
+        name, 
+        salary, 
+        approved
+    }
+
+    
+})
 
 // rotaincial / endpoint
 
