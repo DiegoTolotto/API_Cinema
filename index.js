@@ -16,15 +16,22 @@ app.use(
 app.post('/', async (req, res) => {
 
     //req.body
-    const { name, salary, approved } = req.body
+    const { nome, idade, maiorDeIdade, estudante } = req.body
 
-    const person = {
-        name, 
-        salary, 
-        approved
+    const cliente = {
+        nome, 
+        idade,
+        maiorDeIdade,
+        estudante
     }
 
-    
+    try {
+        
+        
+
+    } catch (error) {
+        res.status(500).json({error: error})
+    }
 })
 
 // rotaincial / endpoint
