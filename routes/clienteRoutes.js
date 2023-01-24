@@ -28,8 +28,20 @@ const Cliente = require('../models/Cliente')
 })
 
  // Read
+ router.get('/', async (req, res) => {
+    try {
+        
+        const clientes = await Cliente.find()
+
+        res.status(200).json(clientes)
+
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
+ })
 
  //Update
+ 
 
  // Delete
 

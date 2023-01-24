@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 })
 
 
-// entragar porta
+// entregar porta
 const DB_USER = ''
 const DB_PASSWORD = encodeURIComponent('')
 
