@@ -18,7 +18,9 @@ const Cliente = require('../models/Cliente')
 
     try {
         
-        
+        await Cliente.create(cliente)
+
+        res.status(201).json({message: 'Pessoa inserida com sucesso'})
 
     } catch (error) {
         res.status(500).json({error: error})
@@ -30,3 +32,5 @@ const Cliente = require('../models/Cliente')
  //Update
 
  // Delete
+
+module.exports = router

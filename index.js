@@ -1,5 +1,4 @@
 //config incial
-const { application } = require('express');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express()
@@ -13,10 +12,12 @@ app.use(
     })
 )
 
-// rotas da API
-const personRouters = require('./routes/clienteRoutes')
+app.use(express.json())
 
-app.use()
+// rotas da API
+const clienteRouters = require('./routes/clienteRoutes')
+
+app.use('/cliente', clienteRouters)
 
 
 // rotaincial / endpoint
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 
     //mostra req
 
-    res.json({ message: 'Oi Express!' })
+    res.json({ message: 'Oi Express cinema aqui!' })
 })
 
 
