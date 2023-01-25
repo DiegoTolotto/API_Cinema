@@ -40,8 +40,57 @@ const Cliente = require('../models/Cliente')
     }
  })
 
+ router.get('/:id', async (req, res) => {
+
+    const id = req.params.id
+
+
+    try {
+    
+        const cliente = await Cliente.findOne({ _id: id })
+
+        // if (!cliente) {
+        //     res.status(422).json({ message: 'Usúario nãoencontrado!' })
+        //     return
+        // }
+
+        res.status(200).json(cliente)
+
+    } catch (error) {
+        res.status(500).json({ erro: error })
+    }
+ })
+
  //Update
- 
+ router.patch('/:id', async (req, res) => {
+
+    const id = req.params.id
+
+    const { nome, idade, maiorDeIdade, estudante } = req.body
+
+
+    const cliente = {
+        nome, 
+        idade,
+        maiorDeIdade,
+        estudante
+    }
+
+    try {
+        
+        const updatedClientes = await Cliente.updateOne({ _id: id }, cliente)
+
+        if (updatedClientes.matchedCount === 0) {
+            res.status(422).json({ message: 'Usúario não encontrado!'})
+        }
+
+
+        res.status(200).json(cliente)
+       
+    } catch (error) {
+        res.status(500).json({ erro: error})
+    }
+ })
 
  // Delete
 

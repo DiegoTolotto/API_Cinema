@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 })
 
 
-// entregar porta
+// porta
 const DB_USER = ''
 const DB_PASSWORD = encodeURIComponent('')
 
@@ -39,6 +39,6 @@ const DB_PASSWORD = encodeURIComponent('')
 mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@apicluster.kz5bzvm.mongodb.net/bancodaapi?retryWrites=true&w=majority`)
     .then(() => {
         console.log('Conectamos com sucesso')
-        app.listen(3000)
+        app.listen(3001)
     })
     .catch((err) => console.log(err))
