@@ -30,8 +30,8 @@ app.get('/', (req, res) => {
 
 
 // porta
-const DB_USER = ''
-const DB_PASSWORD = encodeURIComponent('')
+const DB_USER = 'diego'
+const DB_PASSWORD = encodeURIComponent('eRwkiD5saoZUPHu0')
 
     // Por segurança naõ vou subir ao Github o meu User e nem minha senha 
 
