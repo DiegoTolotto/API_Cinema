@@ -55,4 +55,51 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+router.patch('/:id', async (req, res) => {
+
+    const id = req.params.id
+
+
+    const { nome, tempoDeDuracao, classificacao, genero, descricao, valor } = req.body;
+
+    const filme = {
+        nome, 
+        tempoDeDuracao, 
+        classificacao, 
+        genero, 
+        descricao, 
+        valor
+    }
+
+
+    try {
+
+        const updatedFilmes = await Filme.updateOne({ _id: id}, filme)
+
+        if (updatedFilmes.matchedCount === 0) {
+            res.status(422).json({ message: 'Filme não encontrado'})
+        }
+
+        res.status(200).json(filme)
+        
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
+})
+
+
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id
+
+    try {
+
+        await Filme.deleteOne({ _id: id })
+
+        res.status(200).json({ message: 'Filme deletado com sucesso' })
+        
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
+})
+
 module.exports = router
