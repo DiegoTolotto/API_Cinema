@@ -54,4 +54,28 @@ router.get('/:id', async (req, res) => {
 
 })
 
+
+router.patch('/:id', async (req, res) => {
+
+    const id = req.params.id
+
+    const { sala, filme, cliente } = req.body
+
+    const salas = {
+        sala,
+        filme, 
+        cliente
+    }
+
+    try {
+
+        const updatedSala = await Sala.updateOne({ _id: id }, salas)
+
+        res.status(200).json(salas)
+        
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
+})
+
 module.exports = router
