@@ -21,6 +21,20 @@ router.post('/', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error})
     }
+});
+
+
+router.get('/', async (req, res) => {
+
+    try {
+
+        const salas =  await Sala.find()
+        
+        res.status(200).json(salas)
+
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
 })
 
 module.exports = router
