@@ -7,7 +7,7 @@ const Filme = mongoose.model('Filme', {
     genero: String,
     descricao: String,
     valor: Number,
-    ulr: String
+    link: String,
 })
 
 module.exports = Filme;

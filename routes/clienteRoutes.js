@@ -7,11 +7,9 @@ const Cliente = require('../models/Cliente')
  router.post('/', async (req, res) => {
 
     //req.body
-    const { nome, idade, maiorDeIdade, estudante } = req.body
+    const { maiorDeIdade, estudante } = req.body
 
     const cliente = {
-        nome, 
-        idade,
         maiorDeIdade,
         estudante
     }
@@ -66,12 +64,10 @@ const Cliente = require('../models/Cliente')
 
     const id = req.params.id
 
-    const { nome, idade, maiorDeIdade, estudante } = req.body
+    const { maiorDeIdade, estudante } = req.body
 
 
     const cliente = {
-        nome, 
-        idade,
         maiorDeIdade,
         estudante
     }

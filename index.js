@@ -17,9 +17,11 @@ app.use(express.json())
 // rotas da API
 const clienteRouters = require('./routes/clienteRoutes')
 const filmeRoutes = require('./routes/filmeRouter')
+const salaRouter = require('./routes/salaRouter')
 
 app.use('/cliente', clienteRouters)
 app.use('/filme', filmeRoutes)
+app.use ('/sala', salaRouter)
 
 // rotaincial / endpoint
 app.get('/', (req, res) => {
@@ -31,8 +33,8 @@ app.get('/', (req, res) => {
 
 
 // porta
-const DB_USER = ''
-const DB_PASSWORD = encodeURIComponent('')
+const DB_USER = require('./DB_Access/DB_User');
+const DB_PASSWORD = require('./DB_Access/DB_Passaword')
 
     // Por segurança naõ vou subir ao Github o meu User e nem minha senha 
 
