@@ -49,6 +49,11 @@ router.get('/:id', async (req, res) => {
         
         const filmes = await Filme.findOne({ _id: id})
 
+        if (!filmes) {
+            res.status(422).json({ message: 'Filme não encontrado!' })
+            return
+        }
+
         res.status(200).json(filmes)
 
     } catch (error) {
@@ -92,6 +97,13 @@ router.patch('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const id = req.params.id
+
+    const filmes = await Filme.findOne({ _id: id})
+
+    if (!filmes) {
+        res.status(422).json({ message: 'Filme não encontrado!' })
+        return
+    }
 
     try {
 

@@ -43,9 +43,16 @@ router.get('/:id', async (req, res) => {
 
     try {
         
-        const procuraSala = await Sala.findOne({ _id: id})
+        const sala = await Sala.findOne({ _id: id})
 
-        res.status(200).json(procuraSala)
+
+        if (!sala) {
+            res.status(422).json({ message: 'Sala não encontrada!' })
+            return
+        }
+
+
+        res.status(200).json(sala)
 
     } catch (error) {
         res.status(500).json({ error: error})
@@ -69,6 +76,10 @@ router.patch('/:id', async (req, res) => {
 
     try {
 
+        if ( updatedSala.matchedCount === 0) {
+            res.status(422).json({ message: 'Sala não encontrada' })
+        }
+
         const updatedSala = await Sala.updateOne({ _id: id }, salas)
 
         res.status(200).json(salas)
@@ -82,6 +93,14 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const id = req.params.id
 
+
+    const sala = await Sala.findOne({ _id: id }) 
+    
+    if (!sala) {
+        res.status(422).json({ message: 'Sala não encontrada!' })
+        return
+    }
+    
     try {
         
         const deletaSala = await Sala.deleteOne({ _id: id })
