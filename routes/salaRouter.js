@@ -103,7 +103,7 @@ router.delete('/:id', async (req, res) => {
     
     try {
         
-        const deletaSala = await Sala.deleteOne({ _id: id })
+         await Sala.deleteOne({ _id: id })
 
         res.status(200).json({ messa: 'Sala deletada com sucesso'})
 
