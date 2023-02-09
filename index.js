@@ -33,8 +33,8 @@ app.get('/', (req, res) => {
 
 
 // porta
-const DB_USER = require('./DB_Access/DB_User');
-const DB_PASSWORD = require('./DB_Access/DB_Passaword')
+const DB_USER = require('../DB_Access/DB_User');
+const DB_PASSWORD = require('../DB_Access/DB_Passaword')
 
     // Por segurança naõ vou subir ao Github o meu User e nem minha senha 
 
