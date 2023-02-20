@@ -1,5 +1,5 @@
 //config incial
-const express = require('express');
+const express = require('express')
 const mongoose = require('mongoose');
 const app = express()
 
@@ -15,9 +15,9 @@ app.use(
 app.use(express.json())
 
 // rotas da API
-const clienteRouters = require('./routes/clienteRoutes')
-const filmeRoutes = require('./routes/filmeRouter')
-const salaRouter = require('./routes/salaRouter')
+const clienteRouters = require('./src/routes/clienteRoutes')
+const filmeRoutes = require('./src/routes/filmeRouter')
+const salaRouter = require('./src/routes/salaRouter')
 
 app.use('/cliente', clienteRouters)
 app.use('/filme', filmeRoutes)
@@ -33,8 +33,8 @@ app.get('/', (req, res) => {
 
 
 // porta
-const DB_USER = require('../DB_Access/DB_User');
-const DB_PASSWORD = require('../DB_Access/DB_Passaword')
+const DB_USER = require('./DB_Access/DB_User');
+const DB_PASSWORD = require('./DB_Access/DB_Passaword')
 
     // Por segurança naõ vou subir ao Github o meu User e nem minha senha 
 
