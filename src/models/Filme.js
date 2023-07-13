@@ -6,7 +6,7 @@ const Filme = mongoose.model('Filme', {
     classificacao: String,
     genero: String,
     descricao: String,
-    valor: Number,
+    trailer: String,
     link: String,
 })
 
