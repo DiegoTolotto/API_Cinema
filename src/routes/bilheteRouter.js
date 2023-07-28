@@ -69,7 +69,7 @@ router.patch('/:id', async (req, res) => {
 
     try {
 
-        if ( updatedSala.matchedCount === 0) {
+        if ( updatedBilhete.matchedCount === 0) {
             res.status(422).json({ message: 'Bilhete não encontrada' })
         }
 
