@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const bilhetes =  await Sala.find()
+        const bilhetes =  await Bilhete.find()
         
         res.status(200).json(bilhetes)
 

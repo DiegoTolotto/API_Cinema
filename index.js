@@ -20,10 +20,12 @@ app.use(express.json())
 const clienteRouters = require('./src/routes/clienteRoutes')
 const filmeRoutes = require('./src/routes/filmeRouter')
 const salaRouter = require('./src/routes/salaRouter')
+const bilheteRouter = require('./src/routes/bilheteRouter')
 
 app.use('/cliente', clienteRouters)
 app.use('/filme', filmeRoutes)
 app.use ('/sala', salaRouter)
+app.use('/bilhete', bilheteRouter)
 
 // rotaincial / endpoint
 app.get('/', (req, res) => {
