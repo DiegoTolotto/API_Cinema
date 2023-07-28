@@ -68,12 +68,12 @@ router.patch('/:id', async (req, res) => {
     }
 
     try {
+        const updatedBilhete = await Bilhete.updateOne({ _id: id }, bilhetes)
 
         if ( updatedBilhete.matchedCount === 0) {
             res.status(422).json({ message: 'Bilhete não encontrada' })
         }
 
-        const updatedBilhete = await Bilhete.updateOne({ _id: id }, bilhetes)
 
         res.status(200).json(bilhetes)
         
