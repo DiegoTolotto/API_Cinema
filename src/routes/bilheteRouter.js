@@ -85,6 +85,25 @@ router.patch('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
 
+    const id = req.params.id
+
+
+    const bilhete = await Bilhete.findOne({ _id: id }) 
+    
+    if (!bilhete) {
+        res.status(422).json({ message: 'Bilhete não encontrada!' })
+        return
+    }
+    
+    try {
+        
+         await Bilhete.deleteOne({ _id: id })
+
+        res.status(200).json({ message: 'Bilhete deletada com sucesso'})
+
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
 })
 
 module.exports = router
