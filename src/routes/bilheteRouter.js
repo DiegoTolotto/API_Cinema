@@ -6,13 +6,13 @@ router.post('/', async (req, res) => {
 
     const { assentos } = req.body
 
-    const salas = {
+    const bilhetes = {
         assentos
     }
 
     try {
         
-        await Bilhete.create(salas)
+        await Bilhete.create(bilhetes)
 
         res.status(200).json({ message: "Bilhete criado com sucesso"})
 
@@ -24,6 +24,15 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
 
+    try {
+
+        const bilhetes =  await Sala.find()
+        
+        res.status(200).json(bilhetes)
+
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
 });
 
 router.get('/:id', async (req, res) => {
