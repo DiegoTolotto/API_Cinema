@@ -76,11 +76,11 @@ router.patch('/:id', async (req, res) => {
 
     try {
 
+        const updatedSala = await Sala.updateOne({ _id: id }, salas)
         if ( updatedSala.matchedCount === 0) {
             res.status(422).json({ message: 'Sala não encontrada' })
         }
 
-        const updatedSala = await Sala.updateOne({ _id: id }, salas)
 
         res.status(200).json(salas)
         
@@ -108,7 +108,7 @@ router.delete('/:id', async (req, res) => {
         res.status(200).json({ messa: 'Sala deletada com sucesso'})
 
     } catch (error) {
-        
+        res.status(500).json({ error: error})
     }
 })
 
