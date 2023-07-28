@@ -9,7 +9,7 @@ const filmeShcema = new Schema({
     trailer: String,
     link: String,
     valor: Number,
-    tempoDeDuracao: Number,
+    tempoDeDuracao: Number
 })
 
 const Filme = mongoose.model('Filme', filmeShcema)
