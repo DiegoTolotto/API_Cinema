@@ -36,12 +36,50 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    const id = req.params.id
 
+    try {
+        
+        const bilhete = await Bilhete.findOne({ _id: id})
+
+
+        if (!bilhete) {
+            res.status(422).json({ message: 'Bilhete não encontrada!' })
+            return
+        }
+
+
+        res.status(200).json(bilhete)
+
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
 })
 
 
 router.patch('/:id', async (req, res) => {
 
+    const id = req.params.id
+
+    const { assentos } = req.body
+
+    const bilhetes = {
+        assentos
+    }
+
+    try {
+
+        if ( updatedSala.matchedCount === 0) {
+            res.status(422).json({ message: 'Bilhete não encontrada' })
+        }
+
+        const updatedBilhete = await Bilhete.updateOne({ _id: id }, bilhetes)
+
+        res.status(200).json(bilhetes)
+        
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
 })
 
 
