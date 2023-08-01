@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const Sala = mongoose.model('Sala', {
+const salaSchema = new Schema({
     sala: Number,   
     filme: String,      
-    cliente: String
+    totalAssentos: Number
 })
 
-module.exports = Sala
+const Sala = mongoose.model('sala', salaSchema)
+
+module.exports = Sala;
