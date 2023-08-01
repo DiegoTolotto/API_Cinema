@@ -88,5 +88,28 @@ router.get('/', async (req, res) => {
     }
  })
 
+ // Delete
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id
+
+    const carrinho = await Carrinho.findOne({ _id: id })
+
+    if (!carrinho) {
+        res.status(422).json({ message: 'Usúario não encontrado!' })
+        return
+    }
+
+
+    try {
+        
+        await Carrinho.deleteOne({ _id: id})
+
+        res.status(200).json({message: 'Usúario removido com sucesso!'})
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
+})
+
+
 
 module.exports = router
