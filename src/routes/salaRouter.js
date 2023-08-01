@@ -4,12 +4,12 @@ const Sala = require('../models/Sala')
 
 router.post('/', async (req, res) => {
 
-    const { sala, filme, cliente } = req.body
+    const { sala, filme, totalAssentos } = req.body
 
     const salas = {
         sala,
         filme, 
-        cliente
+        totalAssentos
     }
 
     try {
@@ -66,12 +66,12 @@ router.patch('/:id', async (req, res) => {
 
     const id = req.params.id
 
-    const { sala, filme, cliente } = req.body
+    const { sala, filme, totalAssentos } = req.body
 
     const salas = {
         sala,
         filme, 
-        cliente
+        totalAssentos
     }
 
     try {
