@@ -22,12 +22,14 @@ const filmeRoutes = require('./src/routes/filmeRouter')
 const salaRouter = require('./src/routes/salaRouter')
 const bilheteRouter = require('./src/routes/bilheteRouter')
 const pipocaRouter = require('./src/routes/pipocaRouter')
+const carrinhoRouter = require('./src/routes/carrinhoRouter')
 
 app.use('/cliente', clienteRouters)
 app.use('/filme', filmeRoutes)
 app.use ('/sala', salaRouter)
 app.use('/bilhete', bilheteRouter)
 app.use('/pipoca', pipocaRouter)
+app.use('/carrinho', carrinhoRouter)
 
 // rotaincial / endpoint
 app.get('/', (req, res) => {
