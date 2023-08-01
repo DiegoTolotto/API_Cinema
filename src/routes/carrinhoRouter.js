@@ -59,6 +59,34 @@ router.get('/', async (req, res) => {
     }
  })
 
+  //Update
+  router.patch('/:id', async (req, res) => {
+
+    const id = req.params.id
+
+    const { bilhete, pipoca } = req.body
+
+
+    const carrinho = {
+        bilhete,
+        pipoca
+    }
+
+    try {
+        
+        const updatedCarrinhos = await Carrinho.updateOne({ _id: id }, carrinho)
+
+        if (updatedCarrinhos.matchedCount === 0) {
+            res.status(422).json({ message: 'Usúario não encontrado!'})
+        }
+
+
+        res.status(200).json(carrinho)
+       
+    } catch (error) {
+        res.status(500).json({ erro: error})
+    }
+ })
 
 
 module.exports = router
