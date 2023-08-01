@@ -7,11 +7,12 @@ const Carrinho = require('../models/Carrinho')
  router.post('/', async (req, res) => {
 
     //req.body
-    const { bilhete, pipoca } = req.body
+    const { bilhete, pipoca, valorTotal } = req.body
 
     const carrinho = {
         bilhete,
-        pipoca
+        pipoca, 
+        valorTotal
     }
 
     try {
@@ -64,12 +65,13 @@ router.get('/', async (req, res) => {
 
     const id = req.params.id
 
-    const { bilhete, pipoca } = req.body
+    const { bilhete, pipoca, valorTotal } = req.body
 
 
     const carrinho = {
         bilhete,
-        pipoca
+        pipoca, 
+        valorTotal
     }
 
     try {
