@@ -25,6 +25,40 @@ const Carrinho = require('../models/Carrinho')
     }
 })
 
+// Read
+router.get('/', async (req, res) => {
+    try {
+        
+        const carrinhos = await Carrinho.find()
+
+        res.status(200).json(carrinhos)
+
+    } catch (error) {
+        res.status(500).json({ error: error})
+    }
+ })
+
+ router.get('/:id', async (req, res) => {
+
+    const id = req.params.id
+
+
+    try {
+    
+        const carrinho = await Carrinho.findOne({ _id: id })
+
+        if (!carrinho) {
+            res.status(422).json({ message: 'Usúario não encontrado!' })
+            return
+        }
+
+        res.status(200).json(carrinho)
+
+    } catch (error) {
+        res.status(500).json({ erro: error })
+    }
+ })
+
 
 
 module.exports = router
