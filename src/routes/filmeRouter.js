@@ -5,11 +5,12 @@ const Filme = require('../models/Filme');
 router.post('/', async (req, res) => {
 
 
-    const { nome, tempoDeDuracao, classificacao, genero, descricao, trailer, link } = req.body;
+    const { nome, tempoDeDuracao, valor, classificacao, genero, descricao, trailer, link } = req.body;
 
     const filme = {
         nome, 
         tempoDeDuracao, 
+        valor,
         classificacao, 
         genero, 
         descricao, 
@@ -66,11 +67,12 @@ router.patch('/:id', async (req, res) => {
     const id = req.params.id
 
 
-    const { nome, tempoDeDuracao, classificacao, genero, descricao, trailer, link } = req.body;
+    const { nome, tempoDeDuracao, valor, classificacao, genero, descricao, trailer, link } = req.body;
 
     const filme = {
         nome, 
         tempoDeDuracao, 
+        valor,
         classificacao, 
         genero, 
         descricao, 
