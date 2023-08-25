@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const Cliente = require('../models/Cliente')
+const Cliente = require('../models/User.model')
 
 
  // Create

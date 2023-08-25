@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const Carrinho = require('../models/Carrinho')
+const Carrinho = require('../models/Carrinho.model')
 
 
  // Create
