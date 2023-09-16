@@ -1,3 +1,3 @@
-const DB_PASSWORD = encodeURIComponent('eRwkiD5saoZUPHu0')
+const DB_PASSWORD = 
 
 module.exports = DB_PASSWORD;

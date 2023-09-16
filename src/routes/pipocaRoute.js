@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Pipoca = require('../models/Pipoca')
+const Pipoca = require('../models/Pipoca.model')
 
 
 router.post('/', async (req, res) => {

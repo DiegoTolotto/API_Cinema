@@ -2,9 +2,11 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const cors = require('cors')
-const app = express()
 const cookieSession = require("cookie-session")
+const app = express()
 
+
+//Cors config
 const corsOpitions = {
     origin: "http://localhost:3002"
 }
@@ -35,19 +37,19 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // rotas da API
-const clienteRouters = require('./src/routes/clienteRoutes')
-const filmeRoutes = require('./src/routes/filmeRouter')
-const salaRouter = require('./src/routes/salaRouter')
-const bilheteRouter = require('./src/routes/bilheteRouter')
-const pipocaRouter = require('./src/routes/pipocaRouter')
-const carrinhoRouter = require('./src/routes/carrinhoRouter')
+const userRoute = require('./src/routes/userRoute')
+const filmeRoute = require('./src/routes/filmeRoute')
+const salaRoute = require('./src/routes/salaRoute')
+const bilheteRoute = require('./src/routes/bilheteRoute')
+const pipocaRoute = require('./src/routes/pipocaRoute')
+const carrinhoRoute = require('./src/routes/carrinhoRoute')
 
-app.use('/cliente', clienteRouters)
-app.use('/filme', filmeRoutes)
-app.use ('/sala', salaRouter)
-app.use('/bilhete', bilheteRouter)
-app.use('/pipoca', pipocaRouter)
-app.use('/carrinho', carrinhoRouter)
+app.use('/user', userRoute)
+app.use('/filme', filmeRoute)
+app.use('/sala', salaRoute)
+app.use('/bilhete', bilheteRoute)
+app.use('/pipoca', pipocaRoute)
+app.use('/carrinho', carrinhoRoute)
 
 // rotaincial / endpoint
 app.get('/', (req, res) => {
@@ -63,17 +65,50 @@ app.listen(PORT, () => {
     console.log(`Server está ativo na porta ${PORT}.`);
 });
 
-// porta
-const DB_USER = require('./DB_Access/DB_User');
-const DB_PASSWORD = require('./DB_Access/DB_Passaword')
+const db  = require('./src/models')
+const Role = db.role;
 
-    // Por segurança naõ vou subir ao Github o meu User e nem minha senha 
-
-
-mongoose
-.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@apicluster.kz5bzvm.mongodb.net/bancodaapi?retryWrites=true&w=majority`)
+db.mongoose
+    .connect(`mongodb+srv://${db.DB_USER}:${db.DB_PASSWORD}@apicluster.kz5bzvm.mongodb.net/bancodaapi?retryWrites=true&w=majority`)
     .then(() => {
         console.log('Conectamos com sucesso')
-        app.listen(3001)
+		initial();
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err));
+
+
+function initial() {
+    Role.estimatedDocumentCount((err, count) => {
+        if (!err && count === 0) {
+            new Role({
+                name: "user"
+            }).save(err => {
+                if (err) {
+                    console.log("error", err);
+                }
+
+                console.log("added 'user' to roles collection");
+            });
+
+            new Role({
+                name: "moderator"
+            }).save(err => {
+                if (err) {
+                    console.log("error", err);
+                }
+
+                console.log("added 'moderator' to roles collection");
+            });
+
+            new Role({
+                name: "admin"
+            }).save(err => {
+                if (err) {
+                    console.log("error", err);
+                }
+
+                console.log("added 'admin' to roles collection");
+            });
+        }
+    });
+}

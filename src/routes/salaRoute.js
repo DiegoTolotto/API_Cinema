@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Sala = require('../models/Sala')
+const Sala = require('../models/Sala.model')
 
 
 router.post('/', async (req, res) => {

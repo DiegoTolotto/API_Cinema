@@ -1,4 +1,4 @@
-const DB_USER = 'diego'
+const DB_USER = ''
 
 
 module.exports = DB_USER;

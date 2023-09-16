@@ -1,5 +1,4 @@
 module.exports = {
-    HOST: "0.0.0.0",
-    PORT: 27017,
-    DB: "cinemax_db"
-  };
+    USER: "diego",
+    PASSWORD: encodeURIComponent('eRwkiD5saoZUPHu0'),
+};
