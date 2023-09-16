@@ -14,14 +14,14 @@ const corsOpitions = {
 
 app.use(cors(corsOpitions))
 
-// middleware
+// Middleware config
 app.use(
     express.urlencoded({
         extended: true,
     })
 )
 
-
+// Cookie Config
 app.use(
     cookieSession({
         name: "cinemax-session",
