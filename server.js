@@ -69,12 +69,18 @@ const db  = require('./src/models')
 const Role = db.role;
 
 db.mongoose
-    .connect(`mongodb+srv://${db.DB_USER}:${db.DB_PASSWORD}@apicluster.kz5bzvm.mongodb.net/bancodaapi?retryWrites=true&w=majority`)
+    .connect(`mongodb+srv://${db.DB_USER}:${db.DB_PASSWORD}@apicluster.kz5bzvm.mongodb.net/bancodaapi?retryWrites=true&w=majority` , {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
     .then(() => {
         console.log('Conectamos com sucesso')
 		initial();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+        console.log("Connection error", err);
+        process.exit();
+    });
 
 
 function initial() {
