@@ -65,12 +65,12 @@ app.listen(PORT, () => {
     console.log(`Server está ativo na porta ${PORT}.`);
 });
 
-
+// Config
 const db  = require('./src/models');
 const dbConfig = require('./src/config/db.config');
 const Role = db.role;
 
-
+// Conecção com o mongoDB
 db.mongoose.connect(`mongodb+srv://${dbConfig.HOST}:${dbConfig.PORT}${dbConfig.DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
