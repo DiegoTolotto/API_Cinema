@@ -105,7 +105,7 @@ function initial() {
                     console.log("error", err);
                 }
 
-                console.log("added 'user' to roles collection");
+                console.log("adicionou 'user' à coleção de funções");
             });
 
             new Role({
@@ -115,7 +115,7 @@ function initial() {
                     console.log("error", err);
                 }
 
-                console.log("added 'moderator' to roles collection");
+                console.log("adicionou 'moderator' à coleção de funções");
             });
 
             new Role({
@@ -125,7 +125,7 @@ function initial() {
                     console.log("error", err);
                 }
 
-                console.log("added 'admin' to roles collection");
+                console.log("adicionou 'admin' à coleção de funções");
             });
         }
     });
