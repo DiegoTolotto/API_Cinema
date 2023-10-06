@@ -69,19 +69,30 @@ const db  = require('./src/models');
 const dbConfig = require('./src/config/db.config');
 const Role = db.role;
 
-db.mongoose
-    .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}` , {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
+const n = encodeURIComponent("diego")
+const p = encodeURIComponent('eRwkiD5saoZUPHu0')
+
+
+// entragar porta
+const DB_USER = 'diego'
+const DB_PASSWORD = encodeURIComponent('eRwkiD5saoZUPHu0')
+
+db.mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@apicluster.kz5bzvm.mongodb.net/bancodaapi?retryWrites=true&w=majority`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then(() => {
         console.log('Conectamos com sucesso')
-		initial();
+        initial();
+
     })
     .catch((err) => {
-        console.log("Connection error", err);
+
+        console.log("Connection error", err)
         process.exit();
-    });
+    } 
+    )
+
 
 
 function initial() {
